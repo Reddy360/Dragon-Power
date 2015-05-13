@@ -1,3 +1,4 @@
 name: DragonPower
 version: NOT EVEN
 author: Reddy360
+main: pe.nn.connor.dragonpower.DragonPower

@@ -1,6 +1,5 @@
 package pe.nn.connor.dragonpower.dragons;
 
-import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Fireball;
 import org.bukkit.entity.Player;
 import org.bukkit.event.block.Action;
@@ -28,7 +27,6 @@ public class FireDragon implements Dragon{
 				//Shift-Click = Fireball
 				player.launchProjectile(Fireball.class);
 			}
-			
 		}
 	}
 
@@ -39,7 +37,6 @@ public class FireDragon implements Dragon{
 		}else if(e.getCause() == DamageCause.FIRE || e.getCause() == DamageCause.FIRE_TICK){
 			e.setCancelled(true);
 		}
-		
 	}
 
 }

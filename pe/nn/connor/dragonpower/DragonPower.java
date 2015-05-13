@@ -26,10 +26,12 @@ public class DragonPower extends JavaPlugin implements Listener{
 	public void onEnable() {
 		PluginManager pluginManager = Bukkit.getPluginManager();
 		pluginManager.registerEvents(this, this);
+		
+		dragons = new HashMap<UUID, Dragon>();
 	}
 	
 	@EventHandler
-	public void onJoin(PlayerJoinEvent e){
+	public void chat(PlayerJoinEvent e){
 		//This is only here until we have a better system in place for adding dragons
 		UUID uuid = e.getPlayer().getUniqueId();
 		if(!dragons.containsKey(uuid)){

@@ -75,7 +75,6 @@ public class EarthDragon implements Dragon{
 				right
 			};
 			for(Location location : locations){
-				System.out.println(location.toString());
 				Block block = location.getBlock();
 				if(!(block.getType() == Material.CHEST ||
 						block.getType() == Material.SIGN ||

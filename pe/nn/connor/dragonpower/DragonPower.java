@@ -16,7 +16,7 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import pe.nn.connor.dragonpower.dragons.Dragon;
-import pe.nn.connor.dragonpower.dragons.FireDragon;
+import pe.nn.connor.dragonpower.dragons.EarthDragon;
 
 public class DragonPower extends JavaPlugin implements Listener{
 	//Dragons is a HashMap that lists what each logged in user's dragon is
@@ -37,7 +37,7 @@ public class DragonPower extends JavaPlugin implements Listener{
 		if(!dragons.containsKey(uuid)){
 			//An instance of the dragon for each user, now that's /r/shittyprogramming
 			//Will be changed soon, just throwing this together for now
-			dragons.put(uuid, new FireDragon());
+			dragons.put(uuid, new EarthDragon());
 		}
 	}
 	

@@ -42,7 +42,7 @@ public class EarthDragon implements Dragon{
 		            	Location location = new Location(player.getWorld(), x, y, z);
 		            	location.add(blockLocation);
 		            	Block targetBlock = location.getBlock();
-		            	if(targetBlock.getType() != Material.AIR){
+		            	if(targetBlock.getType() != Material.AIR && targetBlock.getType() != Material.BEDROCK){
 		    				Material material = targetBlock.getType();
 		    				byte data = targetBlock.getData();
 		    				targetBlock.setType(Material.AIR);
@@ -79,7 +79,8 @@ public class EarthDragon implements Dragon{
 				Block block = location.getBlock();
 				if(!(block.getType() == Material.CHEST ||
 						block.getType() == Material.SIGN ||
-						block.getType() == Material.SIGN_POST)){
+						block.getType() == Material.SIGN_POST ||
+						block.getType() == Material.BEDROCK)){
 					//If not chest, sign or sign do this
 					Material material = block.getType();
 					byte data = block.getData();

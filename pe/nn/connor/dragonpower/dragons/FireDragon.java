@@ -24,7 +24,7 @@ public class FireDragon implements Dragon{
 		if(player.isSneaking()){
 			if(e.getAction() == Action.LEFT_CLICK_AIR || e.getAction() == Action.LEFT_CLICK_BLOCK){
 				//Shift-Click = Fireball
-				player.getWorld().spawnEntity(player.getLocation(), EntityType.FIREBALL); //Maybe
+				player.getWorld().spawnEntity(player.getLocation(), EntityType.FIREBALL); //This doesn't work well
 			}
 			
 		}

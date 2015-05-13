@@ -54,10 +54,10 @@ public class DragonPower extends JavaPlugin implements Listener{
 	}
 	
 	@EventHandler
-	public void onFall(EntityDamageEvent e){
+	public void onDamage(EntityDamageEvent e){
 		if(e.getEntityType() == EntityType.PLAYER){
 			Player player = (Player) e.getEntity();
-			dragons.get(player.getUniqueId()).onFall(player, e);
+			dragons.get(player.getUniqueId()).onDamage(player, e);
 		}
 	}
 	

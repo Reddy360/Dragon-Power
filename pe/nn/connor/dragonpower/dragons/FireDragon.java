@@ -4,6 +4,7 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.util.Vector;
@@ -31,8 +32,13 @@ public class FireDragon implements Dragon{
 	}
 
 	@Override
-	public void onFall(Player player, EntityDamageEvent e) {
-		e.setDamage(0.5); // 1/2 of a heart
+	public void onDamage(Player player, EntityDamageEvent e) {
+		if(e.getCause() == DamageCause.FALL){
+			e.setDamage(0.5); // 1/2 of a heart
+		}else if(e.getCause() == DamageCause.FIRE || e.getCause() == DamageCause.FIRE_TICK){
+			e.setCancelled(true);
+		}
+		
 	}
 
 }

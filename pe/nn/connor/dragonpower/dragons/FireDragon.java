@@ -32,7 +32,7 @@ public class FireDragon implements Dragon{
 
 	@Override
 	public void onFall(Player player, EntityDamageEvent e) {
-		e.setDamage(0.5); // 1/4 of a heart
+		e.setDamage(0.5); // 1/2 of a heart
 	}
 
 }

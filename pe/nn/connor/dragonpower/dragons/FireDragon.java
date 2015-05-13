@@ -34,7 +34,7 @@ public class FireDragon implements Dragon{
 	@Override
 	public void onDamage(Player player, EntityDamageEvent e) {
 		if(e.getCause() == DamageCause.FALL){
-			e.setDamage(0.5); // 1/2 of a heart
+			e.setDamage(1);
 		}else if(e.getCause() == DamageCause.FIRE || e.getCause() == DamageCause.FIRE_TICK){
 			e.setCancelled(true);
 		}

@@ -9,6 +9,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
@@ -17,6 +18,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import pe.nn.connor.dragonpower.dragons.Dragon;
 import pe.nn.connor.dragonpower.dragons.EarthDragon;
+import pe.nn.connor.dragonpower.dragons.FireDragon;
 
 public class DragonPower extends JavaPlugin implements Listener{
 	//Dragons is a HashMap that lists what each logged in user's dragon is
@@ -31,12 +33,24 @@ public class DragonPower extends JavaPlugin implements Listener{
 	}
 	
 	@EventHandler
-	public void chat(PlayerJoinEvent e){
+	public void onJoin(PlayerJoinEvent e){
 		//This is only here until we have a better system in place for adding dragons
 		UUID uuid = e.getPlayer().getUniqueId();
 		if(!dragons.containsKey(uuid)){
 			//An instance of the dragon for each user, now that's /r/shittyprogramming
 			//Will be changed soon, just throwing this together for now
+			dragons.put(uuid, new EarthDragon());
+		}
+	}
+	
+	@EventHandler
+	public void onChat(AsyncPlayerChatEvent e){
+		//Fuck it, no commands yet 
+		//Dev 2. Now its a command.
+		UUID uuid = e.getPlayer().getUniqueId();
+		if(e.getMessage().equalsIgnoreCase("!fire")){
+			dragons.put(uuid, new FireDragon());
+		}else if(e.getMessage().equalsIgnoreCase("!earth")){
 			dragons.put(uuid, new EarthDragon());
 		}
 	}

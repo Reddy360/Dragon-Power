@@ -27,7 +27,8 @@ public class FireDragon implements Dragon{
 		if(player.isSneaking()){
 			if(e.getAction() == Action.LEFT_CLICK_AIR || e.getAction() == Action.LEFT_CLICK_BLOCK){
 				//Shift-Click = Fireball
-				player.launchProjectile(Fireball.class);
+				Fireball fireball = player.launchProjectile(Fireball.class);
+				fireball.setVelocity(player.getVelocity().multiply(1.5));
 			}
 		}
 	}

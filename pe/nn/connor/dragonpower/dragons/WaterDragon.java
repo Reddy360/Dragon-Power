@@ -29,8 +29,10 @@ public class WaterDragon implements Dragon{
 				if(!block.isEmpty()){
 					break; //FUCKING STOP M8
 				}
-				block.setType(Material.WATER);
-				block.setData((byte) 9);
+				if(index >= 2){ //Not in your face about it
+					block.setType(Material.WATER);
+					block.setData((byte) 9);
+				}
 				
 				index++;
 			}

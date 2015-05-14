@@ -26,7 +26,7 @@ public class WaterDragon implements Dragon{
 			while(iterator.hasNext()){
 				Block block = iterator.next();
 				blocks[index] = block;
-				if(!block.isEmpty()){
+				if(!block.isEmpty() && !block.isLiquid()){
 					break; //FUCKING STOP M8
 				}
 				if(index >= 2){ //Not in your face about it

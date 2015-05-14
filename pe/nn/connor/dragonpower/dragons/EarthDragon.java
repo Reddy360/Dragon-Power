@@ -104,7 +104,19 @@ public class EarthDragon implements Dragon{
 	@Override
 	public void onEntityAttack(Player player, Entity entity,
 			EntityDamageByEntityEvent e) {
-		
+		Location head = entity.getLocation().clone().add(0, 1, 0);
+		entity.teleport(head.getBlock().getLocation()); //So the player actually stays in the fucking dirt
+		int radius = 1;
+		for(int x = -radius; x <= radius; x++) {
+	        for(int y = -radius; y <= radius; y++) {
+	            for(int z = -radius; z <= radius; z++) {
+	            	Location location = new Location(player.getWorld(), x, y, z);
+	            	location.add(head);
+	            	Block block = location.getBlock();
+	            	block.setType(Material.DIRT);
+	            }
+	        }
+	    }
 	}
 
 }

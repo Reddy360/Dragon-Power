@@ -27,6 +27,7 @@ import org.bukkit.util.Vector;
 import pe.nn.connor.dragonpower.dragons.Dragon;
 import pe.nn.connor.dragonpower.dragons.EarthDragon;
 import pe.nn.connor.dragonpower.dragons.FireDragon;
+import pe.nn.connor.dragonpower.dragons.WaterDragon;
 
 public class DragonPower extends JavaPlugin implements Listener{
 	//Dragons is a HashMap that lists what each logged in user's dragon is
@@ -60,6 +61,8 @@ public class DragonPower extends JavaPlugin implements Listener{
 			dragons.put(uuid, new FireDragon());
 		}else if(e.getMessage().equalsIgnoreCase("!earth")){
 			dragons.put(uuid, new EarthDragon());
+		}else if(e.getMessage().equalsIgnoreCase("!water")){
+			dragons.put(uuid, new WaterDragon());
 		}
 	}
 	

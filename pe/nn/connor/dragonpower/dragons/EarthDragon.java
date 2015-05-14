@@ -106,7 +106,7 @@ public class EarthDragon implements Dragon{
 			EntityDamageByEntityEvent e) {
 		Location head = entity.getLocation().clone().add(0, 1, 0);
 		entity.teleport(head.getBlock().getLocation()); //So the player actually stays in the fucking dirt
-		int radius = 1;
+		int radius = 2;
 		for(int x = -radius; x <= radius; x++) {
 	        for(int y = -radius; y <= radius; y++) {
 	            for(int z = -radius; z <= radius; z++) {

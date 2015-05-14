@@ -2,9 +2,11 @@ package pe.nn.connor.dragonpower.dragons;
 
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.util.BlockIterator;
@@ -49,6 +51,12 @@ public class WaterDragon implements Dragon{
 	public void onMove(Player player, PlayerMoveEvent e) {
 		//TODO Water healing but not overpowered
 		//Like a time limit or some bullcocks
+	}
+
+	@Override
+	public void onEntityInteract(Player player, Entity clicked,
+			PlayerInteractEntityEvent e) {
+		
 	}
 	
 

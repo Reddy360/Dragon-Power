@@ -39,4 +39,9 @@ public class FireDragon implements Dragon{
 		}
 	}
 
+	@Override
+	public void onMove(Player player, PlayerMoveEvent e) {
+		
+	}
+
 }

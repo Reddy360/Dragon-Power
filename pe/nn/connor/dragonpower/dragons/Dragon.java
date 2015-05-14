@@ -9,4 +9,5 @@ public interface Dragon{
 	public void onJump(Player player, PlayerMoveEvent e);
 	public void onClick(Player player, PlayerInteractEvent e);
 	public void onDamage(Player player, EntityDamageEvent e);
+	public void onMove(Player player, PlayerMoveEvent e);
 }

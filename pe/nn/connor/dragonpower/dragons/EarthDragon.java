@@ -94,4 +94,9 @@ public class EarthDragon implements Dragon{
 		}
 	}
 
+	@Override
+	public void onMove(Player player, PlayerMoveEvent e) {
+		
+	}
+
 }

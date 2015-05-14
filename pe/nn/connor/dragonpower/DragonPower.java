@@ -67,6 +67,8 @@ public class DragonPower extends JavaPlugin implements Listener{
 	public void onMove(PlayerMoveEvent e){
 		if(e.getTo().getBlockY() > e.getFrom().getBlockY()){
 			dragons.get(e.getPlayer().getUniqueId()).onJump(e.getPlayer(), e);
+		}else{
+			dragons.get(e.getPlayer().getUniqueId()).onMove(e.getPlayer(), e);
 		}
 	}
 	
@@ -112,7 +114,6 @@ public class DragonPower extends JavaPlugin implements Listener{
 				entity.getWorld().createExplosion(entity.getLocation(), 2F);
 			}
 		}
-	}
-	
+	}	
 	
 }

@@ -5,8 +5,8 @@ import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
-import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.util.BlockIterator;
@@ -54,8 +54,8 @@ public class WaterDragon implements Dragon{
 	}
 
 	@Override
-	public void onEntityInteract(Player player, Entity clicked,
-			PlayerInteractEntityEvent e) {
+	public void onEntityAttack(Player player, Entity entity,
+			EntityDamageByEntityEvent e) {
 		
 	}
 	

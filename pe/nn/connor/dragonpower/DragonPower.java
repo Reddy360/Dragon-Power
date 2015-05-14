@@ -14,6 +14,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
@@ -121,8 +122,11 @@ public class DragonPower extends JavaPlugin implements Listener{
 	}
 	
 	@EventHandler
-	public void onEntityInteract(PlayerInteractEntityEvent e){
-		dragons.get(e.getPlayer().getUniqueId()).onEntityInteract(e.getPlayer(), e.getRightClicked(), e);
+	public void onEntityInteract(EntityDamageByEntityEvent e){
+		if(e.getDamager() instanceof Player){
+			Player player = (Player) e.getDamager();
+			dragons.get(player.getUniqueId()).onEntityAttack(player, e.getEntity(), e);
+		}
 	}
 	
 }

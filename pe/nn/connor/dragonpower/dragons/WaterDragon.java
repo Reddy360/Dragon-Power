@@ -10,12 +10,17 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.util.BlockIterator;
+import org.bukkit.util.Vector;
 
 public class WaterDragon implements Dragon{
 
 	@Override
 	public void onJump(Player player, PlayerMoveEvent e) {
-		
+		if(player.isSneaking()){
+			//Shift-jump = flight 
+			Vector vector = player.getLocation().getDirection().multiply(4);
+			player.setVelocity(vector);
+		}
 	}
 
 	@SuppressWarnings("deprecation")

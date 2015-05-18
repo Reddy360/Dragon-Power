@@ -1,5 +1,6 @@
 package pe.nn.connor.dragonpower.dragons;
 
+import org.bukkit.Sound;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Fireball;
 import org.bukkit.entity.Player;
@@ -19,6 +20,7 @@ public class FireDragon implements Dragon{
 			//Shift-jump = flight 
 			Vector vector = player.getLocation().getDirection().multiply(4);
 			player.setVelocity(vector);
+			player.playSound(player.getLocation(), Sound.ENDERDRAGON_WINGS, 1F, 1F); //WING SPAM
 		}
 	}
 

@@ -43,7 +43,6 @@ public class WaterDragon implements Dragon{
 				
 				index++;
 			}
-			blocks[index].setData((byte)1);
 		}
 	}
 

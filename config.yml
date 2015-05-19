@@ -1,0 +1,41 @@
+#This is the configuration file for DragonPower
+#Some config values may not work yet
+#Infact just imagine this as a list of things to come
+
+fireDragon:
+  enabled: true
+  flyingEnabled: true
+  flyingMultiplier: 4
+  fireballEnabled: true
+  fireballPhysicsEnabled: true
+  fireballMuliplier: 1.5
+  fireballExplosionPower: 2
+  fireballRadius: 2
+  fallDamageReductionEnabled: true
+  fallDamageReduction: 2
+earthDragon:
+  enabled: true
+  flyingEnabled: true
+  flyingMultiplier: 4
+  earthPropulsionEnabled: true
+  earthPropulsionRadius: 2
+  earthPropulsionMultiplier: 1
+  earthPropulsionMultiplierRandom: 1
+  earthPropulsionTargetLimit: 100
+  fallEarthBoomEnabled: true
+  fallEarthBoomVelocity: 0.5
+  fallDamageReductionEnabled: true
+  fallDamageReduction: 2
+  earthPunchEnabled: true
+  earthPunchRadius: 2
+waterDragon:
+  enabled: true
+  flyingEnabled: true
+  flyingMultiplier: 4
+  waterBlastEnabled: true
+  waterBlastDistance: 50
+  waterBlastData: 7
+dragons:
+  SOME_UUID: FIRE
+  OTHER_UUID: WATER
+  JASONS_UUID: EARTH

@@ -18,7 +18,6 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
-import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
@@ -70,23 +69,29 @@ public class DragonPower extends JavaPlugin implements Listener{
 	
 	@EventHandler
 	public void onMove(PlayerMoveEvent e){
-		if(e.getTo().getBlockY() > e.getFrom().getBlockY()){
-			dragons.get(e.getPlayer().getUniqueId()).onJump(e.getPlayer(), e);
-		}else{
-			dragons.get(e.getPlayer().getUniqueId()).onMove(e.getPlayer(), e);
+		if(dragons.containsKey(e.getPlayer().getUniqueId())){
+			if(e.getTo().getBlockY() > e.getFrom().getBlockY()){
+				dragons.get(e.getPlayer().getUniqueId()).onJump(e.getPlayer(), e);
+			}else{
+				dragons.get(e.getPlayer().getUniqueId()).onMove(e.getPlayer(), e);
+			}
 		}
 	}
 	
 	@EventHandler
 	public void onClick(PlayerInteractEvent e){
-		dragons.get(e.getPlayer().getUniqueId()).onClick(e.getPlayer(), e);
+		if(dragons.containsKey(e.getPlayer().getUniqueId())){
+			dragons.get(e.getPlayer().getUniqueId()).onClick(e.getPlayer(), e);
+		}
 	}
 	
 	@EventHandler
 	public void onDamage(EntityDamageEvent e){
 		if(e.getEntityType() == EntityType.PLAYER){
-			Player player = (Player) e.getEntity();
-			dragons.get(player.getUniqueId()).onDamage(player, e);
+			Player player = (Player) e.getEntity();	
+			if(dragons.containsKey(player.getUniqueId())){
+				dragons.get(player.getUniqueId()).onDamage(player, e);
+			}
 		}
 	}
 	
@@ -125,7 +130,9 @@ public class DragonPower extends JavaPlugin implements Listener{
 	public void onEntityInteract(EntityDamageByEntityEvent e){
 		if(e.getDamager() instanceof Player){
 			Player player = (Player) e.getDamager();
-			dragons.get(player.getUniqueId()).onEntityAttack(player, e.getEntity(), e);
+			if(dragons.containsKey(player.getUniqueId())){
+				dragons.get(player.getUniqueId()).onEntityAttack(player, e.getEntity(), e);
+			}
 		}
 	}
 	

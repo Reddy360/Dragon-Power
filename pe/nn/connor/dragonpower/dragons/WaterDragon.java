@@ -38,7 +38,7 @@ public class WaterDragon implements Dragon{
 				}
 				if(index >= 2){ //Not in your face about it
 					block.setType(Material.WATER);
-					block.setData((byte) 9);
+					block.setData((byte) 7);
 				}
 				
 				index++;

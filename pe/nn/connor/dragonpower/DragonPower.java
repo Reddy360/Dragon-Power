@@ -44,6 +44,7 @@ public class DragonPower extends JavaPlugin implements Listener{
 	private HashMap<String, String> configFireDragon;
 	private HashMap<String, String> configEarthDragon;
 	private HashMap<String, String> configWaterDragon;
+	private HashMap<String, String> configAirDragon;
 	
 	@Override
 	public void onEnable() {
@@ -80,7 +81,11 @@ public class DragonPower extends JavaPlugin implements Listener{
 			configWaterDragon.put(key, waterSection.getString(key));
 		}
 		
-		
+		configAirDragon = new HashMap<String, String>();
+		ConfigurationSection airSection = config.getConfigurationSection("airDragon");
+		for(String key : airSection.getKeys(false)){
+			configAirDragon.put(key, airSection.getString(key));
+		}
 	}
 	
 	@EventHandler
@@ -193,6 +198,10 @@ public class DragonPower extends JavaPlugin implements Listener{
 	
 	public HashMap<String, String> getConfigWaterDragon() {
 		return configWaterDragon;
+	}
+	
+	public HashMap<String, String> getConfigAirDragon() {
+		return configAirDragon;
 	}
 	
 	public DragonPowerAPI getAPI(){

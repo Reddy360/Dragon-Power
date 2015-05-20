@@ -9,7 +9,7 @@ Anyway, the shift or sneak key (I'll mention shift and sneaking as that's defaul
 The shift key is the modifier key to enable your dragon powers (or dragon accelerated action)
 
 # Powers
-The powers documentation is correct as of [commit 4f26ff3dea568f89b01f3f335ab6e43839d36ce7](https://github.com/Reddy360/Dragon-Power/tree/4f26ff3dea568f89b01f3f335ab6e43839d36ce7)
+The powers documentation is correct as of 20/05/15 (DD/MM/YY)
 Each different type of dragon has different types of powers, currently you can switch dragons by saying !<dragon type> in chat, for example you can turn into a fire dragon by saying !fire in chat, this will be changed in a later build
 
 ## Fire dragon powers

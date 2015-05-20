@@ -8,6 +8,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.FallingBlock;
 import org.bukkit.entity.Player;
@@ -34,12 +36,44 @@ public class DragonPower extends JavaPlugin implements Listener{
 	//Dragons is a HashMap that lists what each logged in user's dragon is
 	//TODO implement saving and loading
 	private HashMap<UUID, Dragon> dragons;
+	private FileConfiguration config;
+	
+	protected boolean logAPICalls;
+	protected HashMap<String, String> configFireDragon;
+	protected HashMap<String, String> configEarthDragon;
+	protected HashMap<String, String> configWaterDragon;
+	
 	@Override
 	public void onEnable() {
 		PluginManager pluginManager = Bukkit.getPluginManager();
 		pluginManager.registerEvents(this, this);
 		
 		dragons = new HashMap<UUID, Dragon>();
+		config = getConfig();
+		
+		//Config stuff
+		
+		logAPICalls = config.getBoolean("logAPICalls", true);
+		
+		configFireDragon = new HashMap<String, String>();
+		ConfigurationSection fireSection = config.getConfigurationSection("fireDragon");
+		for(String key : fireSection.getKeys(false)){
+			configFireDragon.put(key, fireSection.getString(key));
+		}
+		
+		configEarthDragon = new HashMap<String, String>();
+		ConfigurationSection earthSection = config.getConfigurationSection("earthDragon");
+		for(String key : earthSection.getKeys(false)){
+			configEarthDragon.put(key, earthSection.getString(key));
+		}
+		
+		configWaterDragon = new HashMap<String, String>();
+		ConfigurationSection waterSection = config.getConfigurationSection("waterDragon");
+		for(String key : waterSection.getKeys(false)){
+			configWaterDragon.put(key, waterSection.getString(key));
+		}
+		
+		
 	}
 	
 	@EventHandler

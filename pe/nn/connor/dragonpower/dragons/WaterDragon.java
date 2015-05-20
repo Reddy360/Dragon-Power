@@ -49,10 +49,10 @@ public class WaterDragon implements Dragon{
 			int index = 0;
 			while(iterator.hasNext()){
 				Block block = iterator.next();
-				blocks[index] = block;
 				if((!block.isEmpty() && !block.isLiquid()) || index > distance){
 					break; //FUCKING STOP M8
 				}
+				blocks[index] = block;
 				if(index >= 2){ //Not in your face about it
 					block.setType(Material.WATER);
 					String dataString = dragonConfig.getOrDefault("waterBlastData", "7");

@@ -25,7 +25,7 @@ earthDragon:
   fallEarthBoomEnabled: true
   fallEarthBoomVelocity: 0.5
   fallDamageReductionEnabled: true
-  fallDamageReduction: 2
+  fallDamageReduction: 0
   earthPunchEnabled: true
   earthPunchRadius: 2
 waterDragon:

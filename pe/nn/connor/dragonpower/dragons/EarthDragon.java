@@ -73,7 +73,7 @@ public class EarthDragon implements Dragon{
 		    				if(randomDouble == 1){
 		    					random = new Random().nextDouble();
 		    				}else if(randomDouble > 0){
-		    					random = random * new Random().nextDouble();
+		    					random = randomDouble * new Random().nextDouble();
 		    				}
 		    				String multiplierString = dragonConfig.getOrDefault("earthPropulsionMultiplier", "1");
 		    				double multiplier = Double.parseDouble(multiplierString);

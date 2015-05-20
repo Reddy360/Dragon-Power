@@ -4,7 +4,6 @@
 
 logAPICalls: true
 fireDragon:
-  enabled: true
   flyingEnabled: true
   flyingMultiplier: 4
   fireballEnabled: true
@@ -16,7 +15,6 @@ fireDragon:
   fallDamageReduction: 0.5
   fireDamagePrevention: true
 earthDragon:
-  enabled: true
   flyingEnabled: true
   flyingMultiplier: 4
   earthPropulsionEnabled: true
@@ -31,7 +29,6 @@ earthDragon:
   earthPunchEnabled: true
   earthPunchRadius: 2
 waterDragon:
-  enabled: true
   flyingEnabled: true
   flyingMultiplier: 4
   waterBlastEnabled: true

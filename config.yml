@@ -1,6 +1,6 @@
 #This is the configuration file for DragonPower
-#Some config values may not work yet
-#Infact just imagine this as a list of things to come
+#All configuration values work apart from the dragons storage
+#A tutorial on how to configure this plugin will come soon
 
 logAPICalls: true
 fireDragon:

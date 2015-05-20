@@ -28,6 +28,7 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.util.Vector;
 
+import pe.nn.connor.dragonpower.dragons.AirDragon;
 import pe.nn.connor.dragonpower.dragons.Dragon;
 import pe.nn.connor.dragonpower.dragons.EarthDragon;
 import pe.nn.connor.dragonpower.dragons.FireDragon;
@@ -104,6 +105,8 @@ public class DragonPower extends JavaPlugin implements Listener{
 			dragons.put(uuid, new EarthDragon(this));
 		}else if(e.getMessage().equalsIgnoreCase("!water")){
 			dragons.put(uuid, new WaterDragon(this));
+		}else if(e.getMessage().equalsIgnoreCase("!air")){
+			dragons.put(uuid, new AirDragon(this));
 		}
 	}
 	

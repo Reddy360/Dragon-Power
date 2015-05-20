@@ -1,5 +1,7 @@
 package pe.nn.connor.dragonpower.dragons;
 
+import java.util.HashMap;
+
 import org.bukkit.Sound;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Fireball;
@@ -16,17 +18,19 @@ import pe.nn.connor.dragonpower.DragonPower;
 
 public class FireDragon implements Dragon{
 	
-	private DragonPower dragonPower;
+	private HashMap<String, String> dragonConfig;
 	
 	public FireDragon(DragonPower dragonPower) {
-		this.dragonPower = dragonPower;
+		dragonConfig = dragonPower.getConfigFireDragon();
 	}
 	
 	@Override
 	public void onJump(Player player, PlayerMoveEvent e) {
-		if(player.isSneaking()){
+		if(player.isSneaking() && toBoolean(dragonConfig.getOrDefault("flyingEnabled", "true"))){
 			//Shift-jump = flight 
-			Vector vector = player.getLocation().getDirection().multiply(4);
+			String multiplierString = dragonConfig.getOrDefault("flyingMultiplier", "4");
+			int multiplier = Integer.parseInt(multiplierString);
+			Vector vector = player.getLocation().getDirection().multiply(multiplier);
 			player.setVelocity(vector);
 			player.playSound(player.getLocation(), Sound.ENDERDRAGON_WINGS, 1F, 1F); //WING SPAM
 		}
@@ -34,20 +38,25 @@ public class FireDragon implements Dragon{
 
 	@Override
 	public void onClick(Player player, PlayerInteractEvent e) {
-		if(player.isSneaking()){
+		if(player.isSneaking() && toBoolean(dragonConfig.getOrDefault("fireballEnabled", "true"))){
 			if(e.getAction() == Action.LEFT_CLICK_AIR || e.getAction() == Action.LEFT_CLICK_BLOCK){
 				//Shift-Click = Fireball
 				Fireball fireball = player.launchProjectile(Fireball.class);
-				fireball.setVelocity(player.getVelocity().multiply(1.5));
+				String multiplierString = dragonConfig.getOrDefault("fireballMultiplier", "1.5");
+				double multiplier = Double.parseDouble(multiplierString);
+				fireball.setVelocity(player.getVelocity().multiply(multiplier));
 			}
 		}
 	}
 
 	@Override
 	public void onDamage(Player player, EntityDamageEvent e) {
-		if(e.getCause() == DamageCause.FALL){
-			e.setDamage(0.5); // 1/2 a heart
-		}else if(e.getCause() == DamageCause.FIRE || e.getCause() == DamageCause.FIRE_TICK){
+		if(e.getCause() == DamageCause.FALL && toBoolean(dragonConfig.getOrDefault("fallDamageReductionEnabled", "true"))){
+			String damageString = dragonConfig.getOrDefault("fallDamageReduction", "0.5");
+			double damage = Double.parseDouble(damageString);
+			e.setDamage(damage);
+		}else if((e.getCause() == DamageCause.FIRE || e.getCause() == DamageCause.FIRE_TICK) &&
+				toBoolean(dragonConfig.getOrDefault("fireDamagePrevention", "true"))){
 			e.setCancelled(true);
 		}
 	}
@@ -61,6 +70,10 @@ public class FireDragon implements Dragon{
 	public void onEntityAttack(Player player, Entity entity,
 			EntityDamageByEntityEvent e) {
 		
+	}
+	
+	private boolean toBoolean(String value){
+		return value.equalsIgnoreCase("true");
 	}
 
 }

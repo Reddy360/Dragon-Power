@@ -49,7 +49,7 @@ public class WaterDragon implements Dragon{
 			int index = 0;
 			while(iterator.hasNext()){
 				Block block = iterator.next();
-				if((!block.isEmpty() && !block.isLiquid()) || index > distance){
+				if(((!block.isEmpty() && !block.isLiquid()) && block.getType() != Material.SNOW) || index > distance){
 					break; //FUCKING STOP M8
 				}
 				blocks[index] = block;

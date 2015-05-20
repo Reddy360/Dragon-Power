@@ -7,6 +7,7 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.util.Vector;
@@ -40,7 +41,13 @@ public class AirDragon implements Dragon{
 
 	@Override
 	public void onDamage(Player player, EntityDamageEvent e) {
-		
+		if(e.getCause() == DamageCause.FALL){
+			if(toBoolean(dragonConfig.getOrDefault("fallDamageReductionEnabled", "true"))){
+				String reductionString = dragonConfig.getOrDefault("fallDamageReduction", "0");
+				double reduction = Double.parseDouble(reductionString);
+				e.setDamage(reduction);
+			}
+		}
 	}
 
 	@Override

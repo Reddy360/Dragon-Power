@@ -37,6 +37,8 @@ waterDragon:
 airDragon:
   flyingEnabled: true
   flyingMultiplier: 4
+  fallDamageReductionEnabled: true
+  fallDamageReduction: 0
 dragons:
   SOME_UUID: FIRE
   OTHER_UUID: WATER

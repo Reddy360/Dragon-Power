@@ -1,5 +1,6 @@
 package pe.nn.connor.dragonpower;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Random;
 import java.util.UUID;
@@ -49,6 +50,11 @@ public class DragonPower extends JavaPlugin implements Listener{
 		pluginManager.registerEvents(this, this);
 		
 		dragons = new HashMap<UUID, Dragon>();
+		
+		if(!new File(this.getDataFolder(), "config.yml").exists()){
+			saveDefaultConfig();
+		}
+		
 		config = getConfig();
 		
 		//Config stuff

@@ -40,9 +40,9 @@ public class DragonPower extends JavaPlugin implements Listener{
 	private FileConfiguration config;
 	
 	protected boolean logAPICalls;
-	protected HashMap<String, String> configFireDragon;
-	protected HashMap<String, String> configEarthDragon;
-	protected HashMap<String, String> configWaterDragon;
+	private HashMap<String, String> configFireDragon;
+	private HashMap<String, String> configEarthDragon;
+	private HashMap<String, String> configWaterDragon;
 	
 	@Override
 	public void onEnable() {
@@ -140,28 +140,32 @@ public class DragonPower extends JavaPlugin implements Listener{
 	public void onFireballBoom(ProjectileHitEvent e){
 		if(e.getEntityType() == EntityType.FIREBALL){
 			if(e.getEntity().getShooter() instanceof Player){
-				int radius = 2;
-				Projectile entity = e.getEntity();
-				for(int x = -radius; x <= radius; x++) {
-			        for(int y = -radius; y <= radius; y++) {
-			            for(int z = -radius; z <= radius; z++) {
-			            	Location location = new Location(entity.getWorld(), x, y, z);
-			            	location.add(entity.getLocation());
-			            	Block targetBlock = location.getBlock();
-			            	if(targetBlock.getType() != Material.AIR && targetBlock.getType() != Material.BEDROCK){
-			    				Material material = targetBlock.getType();
-			    				byte data = targetBlock.getData();
-			    				targetBlock.setType(Material.AIR);
-			    				FallingBlock fallingBlock = entity.getWorld().spawnFallingBlock(location, material, data);
-			    				//Make the falling block launch into the air
-			    				double random = new Random().nextDouble();
-			    				fallingBlock.setVelocity(new Vector(0, 1 + random, 0));
-			            	}
-			            }
-			        }
-			    }
-				
-				entity.getWorld().createExplosion(entity.getLocation(), 2F);
+				if(configFireDragon.getOrDefault("fireballPhysicsEnabled", "true").equalsIgnoreCase("true")){
+					String radiusString = configFireDragon.getOrDefault("fireballRadius", "2");
+					int radius = Integer.parseInt(radiusString);
+					Projectile entity = e.getEntity();
+					for(int x = -radius; x <= radius; x++) {
+				        for(int y = -radius; y <= radius; y++) {
+				            for(int z = -radius; z <= radius; z++) {
+				            	Location location = new Location(entity.getWorld(), x, y, z);
+				            	location.add(entity.getLocation());
+				            	Block targetBlock = location.getBlock();
+				            	if(targetBlock.getType() != Material.AIR && targetBlock.getType() != Material.BEDROCK){
+				    				Material material = targetBlock.getType();
+				    				byte data = targetBlock.getData();
+				    				targetBlock.setType(Material.AIR);
+				    				FallingBlock fallingBlock = entity.getWorld().spawnFallingBlock(location, material, data);
+				    				//Make the falling block launch into the air
+				    				double random = new Random().nextDouble();
+				    				fallingBlock.setVelocity(new Vector(0, 1 + random, 0));
+				            	}
+				            }
+				        }
+				    }
+					String powerString = configFireDragon.getOrDefault("fireballExplosionPower", "2");
+					float power = Float.parseFloat(powerString);
+					entity.getWorld().createExplosion(entity.getLocation(), power);
+				}
 			}
 		}
 	}
@@ -174,6 +178,18 @@ public class DragonPower extends JavaPlugin implements Listener{
 				dragons.get(player.getUniqueId()).onEntityAttack(player, e.getEntity(), e);
 			}
 		}
+	}
+	
+	public HashMap<String, String> getConfigFireDragon() {
+		return configFireDragon;
+	}
+	
+	public HashMap<String, String> getConfigEarthDragon() {
+		return configEarthDragon;
+	}
+	
+	public HashMap<String, String> getConfigWaterDragon() {
+		return configWaterDragon;
 	}
 	
 	public DragonPowerAPI getAPI(){

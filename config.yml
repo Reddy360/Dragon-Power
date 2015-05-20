@@ -14,6 +14,7 @@ fireDragon:
   fireballRadius: 2
   fallDamageReductionEnabled: true
   fallDamageReduction: 0.5
+  fireDamagePrevention: true
 earthDragon:
   enabled: true
   flyingEnabled: true

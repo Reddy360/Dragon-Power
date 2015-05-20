@@ -13,7 +13,7 @@ fireDragon:
   fireballExplosionPower: 2
   fireballRadius: 2
   fallDamageReductionEnabled: true
-  fallDamageReduction: 2
+  fallDamageReduction: 0.5
 earthDragon:
   enabled: true
   flyingEnabled: true

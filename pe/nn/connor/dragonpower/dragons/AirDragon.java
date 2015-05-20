@@ -2,6 +2,7 @@ package pe.nn.connor.dragonpower.dragons;
 
 import java.util.HashMap;
 
+import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -24,14 +25,7 @@ public class AirDragon implements Dragon{
 
 	@Override
 	public void onJump(Player player, PlayerMoveEvent e) {
-		if(player.isSneaking() && toBoolean(dragonConfig.getOrDefault("flyingEnabled", "true"))){
-			//Shift-jump = flight 
-			String multiplierString = dragonConfig.getOrDefault("flyingMultiplier", "4");
-			int multiplier = Integer.parseInt(multiplierString);
-			Vector vector = player.getLocation().getDirection().multiply(multiplier);
-			player.setVelocity(vector);
-			player.playSound(player.getLocation(), Sound.ENDERDRAGON_WINGS, 1F, 1F); //WING SPAM
-		}
+		
 	}
 
 	@Override
@@ -52,7 +46,18 @@ public class AirDragon implements Dragon{
 
 	@Override
 	public void onMove(Player player, PlayerMoveEvent e) {
-		
+		Location from = e.getFrom();
+		Location to = e.getTo();
+		if(from.getY() != to.getY()){
+			if(player.isSneaking() && toBoolean(dragonConfig.getOrDefault("flyingEnabled", "true"))){
+				//Shift-jump = flight 
+				String multiplierString = dragonConfig.getOrDefault("flyingMultiplier", "4");
+				int multiplier = Integer.parseInt(multiplierString);
+				Vector vector = player.getLocation().getDirection().multiply(multiplier);
+				player.setVelocity(vector);
+				player.playSound(player.getLocation(), Sound.ENDERDRAGON_WINGS, 1F, 1F); //WING SPAM
+			}
+		}
 	}
 
 	@Override

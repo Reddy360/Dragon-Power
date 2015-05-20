@@ -14,9 +14,10 @@ import pe.nn.connor.dragonpower.dragons.Dragon;
 public class DragonPowerAPI {
 	
 	private DragonPower dragonPower;
-	boolean logAPICalls = true; //This will be a config option, I swear!
+	boolean logAPICalls;
 	public DragonPowerAPI(DragonPower dragonPower) {
 		this.dragonPower = dragonPower;
+		logAPICalls = dragonPower.logAPICalls;
 	}
 	
 	public void log(String message){

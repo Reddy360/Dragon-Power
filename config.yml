@@ -34,6 +34,9 @@ waterDragon:
   waterBlastEnabled: true
   waterBlastDistance: 50
   waterBlastData: 7
+airDragon:
+  flyingEnabled: true
+  flyingMultiplier: 4
 dragons:
   SOME_UUID: FIRE
   OTHER_UUID: WATER

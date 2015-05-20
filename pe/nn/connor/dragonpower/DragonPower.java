@@ -136,4 +136,18 @@ public class DragonPower extends JavaPlugin implements Listener{
 		}
 	}
 	
+	public DragonPowerAPI getAPI(){
+		return new DragonPowerAPI(this);
+	}
+	
+	//Methods only called by the API
+	
+	protected HashMap<UUID, Dragon> getDragons(){
+		return dragons;
+	}
+	
+	protected void setDragon(UUID player, Dragon dragon){
+		dragons.put(player, dragon);
+	}
+	
 }

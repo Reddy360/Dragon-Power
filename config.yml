@@ -2,6 +2,7 @@
 #Some config values may not work yet
 #Infact just imagine this as a list of things to come
 
+logAPICalls: true
 fireDragon:
   enabled: true
   flyingEnabled: true

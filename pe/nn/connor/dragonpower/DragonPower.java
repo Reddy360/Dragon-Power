@@ -89,7 +89,7 @@ public class DragonPower extends JavaPlugin implements Listener{
 		if(!dragons.containsKey(uuid)){
 			//An instance of the dragon for each user, now that's /r/shittyprogramming
 			//Will be changed soon, just throwing this together for now
-			dragons.put(uuid, new EarthDragon());
+			dragons.put(uuid, new EarthDragon(this));
 		}
 	}
 	
@@ -99,11 +99,11 @@ public class DragonPower extends JavaPlugin implements Listener{
 		//Dev 2. Now its a command.
 		UUID uuid = e.getPlayer().getUniqueId();
 		if(e.getMessage().equalsIgnoreCase("!fire")){
-			dragons.put(uuid, new FireDragon());
+			dragons.put(uuid, new FireDragon(this));
 		}else if(e.getMessage().equalsIgnoreCase("!earth")){
-			dragons.put(uuid, new EarthDragon());
+			dragons.put(uuid, new EarthDragon(this));
 		}else if(e.getMessage().equalsIgnoreCase("!water")){
-			dragons.put(uuid, new WaterDragon());
+			dragons.put(uuid, new WaterDragon(this));
 		}
 	}
 	

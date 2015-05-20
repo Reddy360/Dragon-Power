@@ -10,6 +10,9 @@ import java.util.UUID;
 import org.bukkit.entity.Player;
 
 import pe.nn.connor.dragonpower.dragons.Dragon;
+import pe.nn.connor.dragonpower.dragons.EarthDragon;
+import pe.nn.connor.dragonpower.dragons.FireDragon;
+import pe.nn.connor.dragonpower.dragons.WaterDragon;
 
 public class DragonPowerAPI {
 	
@@ -80,4 +83,30 @@ public class DragonPowerAPI {
 		log("Method getDragons called");
 		return dragonPower.getDragons();
 	}
+	
+	/**
+	 * Creates an instance of the FireDragon class
+	 * @return FireDragon
+	 */
+	public FireDragon getFireDragon(){
+		return new FireDragon(dragonPower);
+	}
+	
+	/**
+	 * Creates an instance of the EarthDragon class
+	 * @return EarthDragon
+	 */
+	public EarthDragon getEarthDragon(){
+		return new EarthDragon(dragonPower);
+	}
+	
+	/**
+	 * Creates an instance of the WaterDragon class
+	 * @return WaterDragon
+	 */
+	public WaterDragon getWaterDragon(){
+		return new WaterDragon(dragonPower);
+	}
+	
+	
 }

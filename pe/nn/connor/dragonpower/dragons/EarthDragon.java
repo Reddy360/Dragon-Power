@@ -17,8 +17,16 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.util.Vector;
 
-public class EarthDragon implements Dragon{
+import pe.nn.connor.dragonpower.DragonPower;
 
+public class EarthDragon implements Dragon{
+	
+	private DragonPower dragonPower;
+	
+	public EarthDragon(DragonPower dragonPower) {
+		this.dragonPower = dragonPower;
+	}
+	
 	@Override
 	public void onJump(Player player, PlayerMoveEvent e) {
 		if(player.isSneaking()){

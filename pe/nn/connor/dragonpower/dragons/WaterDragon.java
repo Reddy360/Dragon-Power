@@ -1,6 +1,9 @@
 package pe.nn.connor.dragonpower.dragons;
 
+import java.util.HashMap;
+
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -16,37 +19,45 @@ import pe.nn.connor.dragonpower.DragonPower;
 
 public class WaterDragon implements Dragon{
 	
-	private DragonPower dragonPower;
+	private HashMap<String, String> dragonConfig;
 	
 	public WaterDragon(DragonPower dragonPower) {
-		this.dragonPower = dragonPower;
+		dragonConfig = dragonPower.getConfigWaterDragon();
 	}
 	
 	@Override
 	public void onJump(Player player, PlayerMoveEvent e) {
-		if(player.isSneaking()){
+		if(player.isSneaking() && toBoolean(dragonConfig.getOrDefault("flyingEnabled", "true"))){
 			//Shift-jump = flight 
-			Vector vector = player.getLocation().getDirection().multiply(4);
+			String multiplierString = dragonConfig.getOrDefault("flyingMultiplier", "4");
+			int multiplier = Integer.parseInt(multiplierString);
+			Vector vector = player.getLocation().getDirection().multiply(multiplier);
 			player.setVelocity(vector);
+			player.playSound(player.getLocation(), Sound.ENDERDRAGON_WINGS, 1F, 1F); //WING SPAM
 		}
 	}
 
 	@SuppressWarnings("deprecation")
 	@Override
 	public void onClick(Player player, PlayerInteractEvent e) {
-		if(player.isSneaking() && (e.getAction() == Action.LEFT_CLICK_AIR || e.getAction() == Action.LEFT_CLICK_BLOCK)){
-			BlockIterator iterator = new BlockIterator(player.getLocation(), 0.0, 50); //I hope to my Nan this works
-			Block[] blocks = new Block[55]; //Just to be sure I'll give it more
+		if((player.isSneaking() && (e.getAction() == Action.LEFT_CLICK_AIR || e.getAction() == Action.LEFT_CLICK_BLOCK)) &&
+				toBoolean(dragonConfig.getOrDefault("waterBlastEnabled", "true"))){
+			String distanceString = dragonConfig.getOrDefault("waterBlastDistance", "50");
+			int distance = Integer.parseInt(distanceString);
+			BlockIterator iterator = new BlockIterator(player.getLocation(), 0.0, distance); //I hope to my Nan this works
+			Block[] blocks = new Block[distance + 1]; //Just to be sure I'll give it more
 			int index = 0;
 			while(iterator.hasNext()){
 				Block block = iterator.next();
 				blocks[index] = block;
-				if((!block.isEmpty() && !block.isLiquid()) || index > 50){
+				if((!block.isEmpty() && !block.isLiquid()) || index > distance){
 					break; //FUCKING STOP M8
 				}
 				if(index >= 2){ //Not in your face about it
 					block.setType(Material.WATER);
-					block.setData((byte) 7);
+					String dataString = dragonConfig.getOrDefault("waterBlastData", "7");
+					byte data = Byte.parseByte(dataString);
+					block.setData(data);
 				}
 				
 				index++;
@@ -71,5 +82,8 @@ public class WaterDragon implements Dragon{
 		
 	}
 	
+	private boolean toBoolean(String value){
+		return value.equalsIgnoreCase("true");
+	}
 
 }

@@ -10,6 +10,7 @@ The shift key is the modifier key to enable your dragon powers (or dragon accele
 
 # Powers
 The powers documentation is correct as of 20/05/15 (DD/MM/YY)
+
 Each different type of dragon has different types of powers, currently you can switch dragons by saying !<dragon type> in chat, for example you can turn into a fire dragon by saying !fire in chat, this will be changed in a later build
 
 ## Fire dragon powers

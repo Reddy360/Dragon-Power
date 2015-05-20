@@ -5,7 +5,7 @@ I created a plugin a while back for a loose Fairy Tail server, the dragons I pro
 This plugin is NOT currently designed for a normal server due to no restrictions on the player's powers
 The dragons are not balanced and while they may be some day they'd be really overpowered and could easilly detroy a server
 
-Anyway, the shift or sneak key (I'll mention shift and sneaking as that's default)
+Anyway, the shift or sneak key (I'll mention shift as sneaking as that's the default key)
 The shift key is the modifier key to enable your dragon powers (or dragon accelerated action)
 
 # Powers

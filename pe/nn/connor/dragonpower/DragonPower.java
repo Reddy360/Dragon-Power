@@ -55,9 +55,9 @@ public class DragonPower extends JavaPlugin implements Listener{
 			saveDefaultConfig();
 		}
 		
-		config = getConfig();
-		
 		//Config stuff
+		
+		config = getConfig();
 		
 		logAPICalls = config.getBoolean("logAPICalls", true);
 		

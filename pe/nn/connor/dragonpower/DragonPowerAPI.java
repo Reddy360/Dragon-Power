@@ -28,6 +28,7 @@ public class DragonPowerAPI {
 			    out.close();
 			} catch (IOException e) {
 			    //Shit
+				e.printStackTrace();
 			}
 		}
 	}

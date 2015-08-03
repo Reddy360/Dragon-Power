@@ -27,7 +27,8 @@ public class DragonPowerAPI {
 	private void log(String message){
 		if(logAPICalls){
 			try {
-			    PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(dragonPower.getDataFolder() + "/APICALLS.LOG", true)));
+				String apiLog = dragonPower.getDataFolder() + "/APICALLS.LOG";
+			    PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(apiLog, true)));
 			    out.println(message);
 			    out.close();
 			} catch (IOException e) {
